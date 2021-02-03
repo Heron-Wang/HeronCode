@@ -59,43 +59,24 @@ var readBinaryWatch = function(num) {
         ["00"],
         ["01","02","04","08","16","32"],
         ["03","05","09","17","33","06","10","18","34","12","20","36","24","40","48"],
-        [],
-        ["56","54","50","42","26","53","49","41","25","47","39","23","35","19","11"],
-        ["58","57","55","51","43","27"],
-        ["59"],
+        ["07","11","19","35","13","21","37","25","41","49","14","22","38","26","42","50","28","44","52","56"],
+        [ "58","54","46","30","57","53","45","29","51","43","27","39","23","15"],
+        [ "59","55","47","31"]
     ];
-        // 生成mapm[3]
-    let m=[1,2,4,8,16,32];
-    for(let i = 0 ; i < m.length; i++){   
-        for(let j = i +1 ; j < m.length; j++){
-            for(let k = j +1 ; k < m.length; k++){
-                let sum=m[i]+m[j]+m[k];
-                if(mapm[3].indexOf(sum) === -1){
-                    if(sum<10)mapm[3].push("0"+sum.toString());
-                    else mapm[3].push(sum.toString());
-                }
-            
-            }
-        }
-    }
-    
-
     function helper(num){
         let res=[];
-
-       for(let  i= 0 ; i <=num && i<4 ; i++){
-           for(let j = 0 ; j < maph[i].length; j++){
-               for(let k = 0 ; k < mapm[num-i].length; k++){
-                res.push( maph[i][j]+ ":"+mapm[num-i][k]);
-               }
-            }
-       }
-        
+        for(let  i= 0 ; i <= num && i < maph.length; i++){
+            let j = num -i;
+            if(j >= mapm.length)continue;
+                for(let k = 0; k < maph[i].length ; k++){
+                    for(let l = 0 ;l < mapm[j].length; l++){
+                        res.push(maph[i][k]+":"+mapm[j][l]);
+                    }
+                }       
+        }
+       res.sort();   
        return res;
-
     }
-
-
     return helper(num);
 
     
