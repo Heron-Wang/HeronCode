@@ -51,12 +51,20 @@ var validPalindrome = function(s) {
             left++,right--;
         }
         else {
-            if(s[left] != s[right-1] && s[left+1]!=s[right]){
+            if(s[left] != s[right-1] && s[left+1] != s[right]){
                 return false;
             } 
+            else return isvalid(s.slice(left,right) ) || isvalid(s.slice(left+1,right+1));
         }
     }
-    
+    return true;
+
+    function isvalid(s){
+        for(let i =0 ,j =s.length-1;i<j;i++,j--){
+            if(s[i]!=s[j])return false;
+        }
+        return true;
+    }
 };
 // @lc code=end
 
