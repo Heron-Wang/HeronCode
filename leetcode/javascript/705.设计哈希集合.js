@@ -9,7 +9,7 @@
  * Initialize your data structure here.
  */
 var MyHashSet = function() {
-    this.dataStore=[];
+    this.s= new Set();
     
 };
 
@@ -18,7 +18,7 @@ var MyHashSet = function() {
  * @return {void}
  */
 MyHashSet.prototype.add = function(key) {
-    this.dataStore.push(key);
+    this.s.add(key);
 };
 
 /** 
@@ -26,6 +26,8 @@ MyHashSet.prototype.add = function(key) {
  * @return {void}
  */
 MyHashSet.prototype.remove = function(key) {
+
+    this.s.delete(key);
     
 };
 
@@ -35,6 +37,7 @@ MyHashSet.prototype.remove = function(key) {
  * @return {boolean}
  */
 MyHashSet.prototype.contains = function(key) {
+    return this.s.has(key)
     
 };
 
