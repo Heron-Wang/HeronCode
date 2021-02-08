@@ -61,3 +61,12 @@
 
 > git config --global user.name="heronwang@qq.com"
 > git config --global user.email="Heron"
+
+
+
+禁用笔记本自带键盘
+> sc config i8042prt start= disabled
+
+
+打开笔记本自带键盘
+>sc config i8042prt start= auto
