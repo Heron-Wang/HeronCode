@@ -72,4 +72,4 @@
 >sc config i8042prt start= auto
 
 
- 解决冲突
+ 本地修改
