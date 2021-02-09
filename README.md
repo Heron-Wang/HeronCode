@@ -70,3 +70,6 @@
 
 打开笔记本自带键盘
 >sc config i8042prt start= auto
+
+
+远程修改
