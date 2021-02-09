@@ -72,4 +72,4 @@
 >sc config i8042prt start= auto
 
 
-远程修改
+ 解决冲突
