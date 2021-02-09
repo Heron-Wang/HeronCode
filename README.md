@@ -72,4 +72,6 @@
 >sc config i8042prt start= auto
 
 
- 本地修改
+ 远程修改
+ 
+ 
