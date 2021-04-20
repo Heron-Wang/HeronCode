@@ -1,0 +1,65 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>动画</title>
+    <style>
+        div.f1{
+            width: 200px;
+            height:100px;
+            margin:auto;
+            border:1px red solid;
+            animation: scaleDiv 5s infinite; 
+        }
+        @keyframes scaleDiv{
+            0%{    transform:scale(0.5);}
+            60%{    transform:scale(2);}
+            100%{    transform:scale(0.5);}
+
+        }
+
+        #f2{
+            width:100px;
+            height:200px;
+            border:1px solid red;
+        }
+    </style>
+    </head> 
+ <body>
+<p>css实现动画</p>
+<div class="f1"></div>
+
+
+
+
+<p>js实现动画：requestAnimationFrame</p>
+<div id="f2" style = "width:10%;height:200px;border:1px solid red;">yes</div>
+     <script>
+         function updateProgress(){
+             var div = document.getElementById("f2");
+            //  console.log(div);
+            //  console.log(div.style.width);
+            //  console.log(div.style.width);
+            //  alert(0);   
+             let cur=  +div.style.width.split("%")[0];
+             div.style.width= "" + (cur + 1) + "%";
+            //  console.log(div.style.width.split("%")[0])
+             if(cur <= 100){
+                window.requestAnimationFrame(updateProgress);
+             }else {
+                div.style.width="10%";
+                window.requestAnimationFrame(updateProgress);
+             }
+         }
+        let id = window.requestAnimationFrame(updateProgress); //放入回调函数，更新频率会根据系统的刷新率而进行调整。
+        setTimeout(()=>{
+            console.log("cancel")
+            window.cancelAnimationFrame(id);
+        },1000)
+
+
+     </script>
+ </body>
+ </html>

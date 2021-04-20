@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>DOM元素遍历</title>
+</head>
+<body>
+    <div id ='parent'>这里如果紧挨着后面的子节点，就不会有这个文本节点
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <ul>
+            <li class="item1"></li>
+            <li class="item2"></li>
+            <li class="item3"></li>
+        </ul>
+    </div>
+    <script>
+        let parent = document.getElementById("parent");
+
+        /** 过去的遍历方法 谷歌浏览器支持，能正常打印出来
+         * 常用属性:firstChild , lastChild, nextSibling
+         * 可以遍历所有类型的节点，比如文本节点。
+         * 需要使用 nodeType属性对节点类型进行判断来遍历所需要遍历的节点
+        */
+        let currentChildNode = parent.firstChild; //这里返回第一个孩子节点，文本节点
+        // console.log(Boolean(currentChildNode))
+        while(currentChildNode){
+            console.log(currentChildNode)
+            if(currentChildNode.nodeType == 1){
+                // console.log(1,currentChildNode);
+
+            }
+            if(currentChildNode == parent.lastChild){
+                break;
+            }
+            currentChildNode = currentChildNode.nextSibling;   //  这里我写错了
+        }
+
+        /** 现在的遍历方法 IE9及以上都支持
+         * 常用属性：firstElementChild，lastElementChild，nextElementSibling
+         * 直接遍历的是Element类型的元素节点，就不会遍历文本类型的节点。
+         * 
+         */
+        // let cur = parent.firstElementChild; //直接就是Element类型，不会是文本节点
+        // while(cur){
+        //     console.log(cur);
+        //     if(cur == parent.lastElementChild){
+        //         break;
+        //     }
+        //     cur = cur.nextElementSibling;
+        // }
+
+
+    </script>
+    
+</body>
+</html>

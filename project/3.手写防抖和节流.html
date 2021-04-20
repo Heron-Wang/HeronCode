@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+    <div id="test" style="height:300px;width:800px;overflow:auto" >454544
+    545454<br>
+    545454<br>
+    545454<br>
+    545454<br>
+    545454<br>
+    545454<br>
+    545454<br>
+    545454<br>
+    545454<br>
+    545454<br>
+    545454<br>
+    545454<br>
+    545454<br>
+    545454<br>
+    545454<br>
+    545454<br>
+    545454<br>
+    545454<br>
+    545454<br>
+</div>
+    <script>
+/*         // function fn(){
+        //     setTimeout(function (){
+        //         $('#test').html(new Date())
+        //     },20); //20ms执行一次fun
+        // }
+
+        
+
+        // debounce(fn,1000);
+
+        // //防抖：高频事件中只执行一次函数，
+        // function debounce(fn,time){
+        //     let timer= null;
+        //     return function(e){
+        //         clearTimeout(timer);
+        //         timer=setTimeout(function(){
+        //             fn.apply(this,arguments);
+        //         },time)
+        //     }
+
+        // } */
+
+    function debounce(fn, delay) {//防抖
+    // 定义一个定时器timer，用来记录当前执行函数状态（借助闭包）
+    let timer = null;
+    
+    return function() {
+        // 通过 ‘this’ 和 ‘arguments’ 获取函数的作用域和变量
+        let context = this;
+        let args = arguments;
+        if (timer)  //进入该分支，说明当前正在一个计时过程中，并且又触发了相同事件
+            clearTimeout(timer);  // 所以要取消当前的计时，并重新开始计时
+        timer = setTimeout(function() {
+        fn.apply(context, args);
+        }, delay);
+    }
+    }
+    
+    // 处理函数
+    function handle() {
+        console.log(new Date()  ); 
+    }
+    // 滚动事件
+    // $("#test").on('scroll', debounce(handle, 100));
+
+        
+        //节流：高频事件中，稀释函数的执行频率
+//节流throttle代码：
+function throttle(fn,delay) {
+    let canRun = true; // 通过闭包保存一个标记
+    return function () {
+         // 在函数开头判断标记是否为true，不为true则return
+        if (!canRun) return;
+         // 立即设置为false
+        canRun = false;
+        // 将外部传入的函数的执行放在setTimeout中
+        setTimeout(() => { 
+        // 最后在setTimeout执行完毕后再把标记设置为true(关键)表示可以执行下一次循环了。
+        // 当定时器没有执行的时候标记永远是false，在开头被return掉
+            fn.apply(this, arguments);
+            canRun = true;
+        }, delay);
+    };
+}
+
+function sayHi(e) {
+    console.log('节流：', e.target.innerWidth, e.target.innerHeight);
+}
+
+    $("#test").on('scroll',  throttle(sayHi,1000));
+
+// window.addEventListener('scroll', throttle(sayHi,100));
+
+
+
+    </script> 
+
+</body>
+</html>

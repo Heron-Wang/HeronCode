@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>html5以前的html规范中从未出现描述javascript接口的情形，html就是一个标记语言。javascript绑定的事，一概交给dom规范去定义</p>
+    <p>然而html5却包含了与标记相关的大量javascript API定义。其中有些API与DOM重合，定义了浏览器应该提供的DOM扩展</p>
+    <h1>css扩展</h1>
+    <p>getElementByTagName()通过类名获得元素列表</p>
+    <p>classList属性有元素的类名列表，有几个常用方法：
+        add(newClassName)
+        contains(className)
+        remove(className)
+        taggle(className)
+    </p>
+
+    <h1>焦点管理</h1>
+    <p>document.activeElement始终包含当前拥有焦点的DOM元素</p>
+    <p>focus() 元素获取焦点 </p>
+    <p>document.hasFocus()确定文档是否获取焦点</p>
+
+    <h1>插入标记</h1>
+    <p>innerHTML</p>
+    <p>outerHTML</p>
+    <p>insertAdjacentHTML和insertAdjacentHTML，两个参数：</p>
+    <p>第一个参数：beforebegin，beforeend，afterbegin，afterend</p>
+    <p>第二个参数：要插入的HTML或者文本片段</p>
+
+
+    <p>使用innerHTML容易向恶意用户暴露很大攻击面，因为别人可以通过这个毫不费力的创建元素并执行onclick之类的属性</p>
+    <p>使用innerHTML要防止xss攻击，此时一定要隔离插入的数据，对其进行转义</p>
+
+    <h1>scrollIntoView </h1>
+    <p> </p>
+
+</body>
+</html>

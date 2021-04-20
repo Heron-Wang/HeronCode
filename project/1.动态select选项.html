@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="select" id="myselect">
+    </select>
+    <script>
+//使用 DocumentFragment
+            // let arr=[10,11,12];
+            // let fg = document.createDocumentFragment(); 
+            // let select = document.getElementById("myselect");
+            // for(let i =0 ;i < arr.length;i++){
+            //     let option = document.createElement("option");
+            //     option.value=arr[i];
+            //     option.appendChild(document.createTextNode(arr[i]));
+            //     fg.appendChild(option);
+            // }
+            // select.appendChild(fg);
+//使用innerHTML
+    let arr=[11,12,13]
+    let select = document.getElementById("myselect");
+    let innerstr="";
+    for(let i = 0 ;i < arr.length;i++){
+        let opt = `<option value='${arr[i]}'>${arr[i]}</option>`;
+        innerstr += opt;
+    }
+    select.innerHTML=innerstr;
+
+    </script>
+</body>
+</html>
